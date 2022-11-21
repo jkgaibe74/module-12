@@ -1,0 +1,48 @@
+# a. construct a time series plot using R.
+
+
+
+
+
+ # input data (charges from the credit card )
+chargeSC <-c(31.9,27,31.3,31,39.4,40.7,42.3,49.5,45,50,50.9,58.5,39.4,36.2,40.5,44.6,46.8,44.7,52.2,54,48.8 ,55.8,58.7,63.4) 
+creditTS <- ts(chargeSC, frequency = 12, start = c(2012,1)) # setting up data to plot the months in
+creditTS # forming appropriate data to timeseries
+ plot.ts(creditTS) # plotting a timerseries table
+ 
+ # Results" Plot shows that the the charges are gradually increasing from month to month. 
+ 
+ 
+ creditHW <- HoltWinters(creditTS,beta=FALSE,gamma=FALSE)
+ creditHW
+ 
+ Holt-Winters exponential smoothing without trend and without seasonal component.
+ 
+ Call:
+   HoltWinters(x = creditTS, beta = FALSE, gamma = FALSE)
+ 
+ Smoothing parameters:
+   alpha: 0.8232442
+ beta : FALSE
+ gamma: FALSE
+ 
+ Coefficients:
+   [,1]
+ a 62.44453
+ 
+ plot(creditHW)
+ 
+ # Results: By employing the exponential smoothing model, the calculations shows the coefficient for level smoothing that the alpha is 0.82, and both beta and gamma are false. The value of alpha is 
+ #          0.82, this level is at the threshold that is high enough to be estimated at the current time point in recent observations. Both beta and gamma are false
+ #          indicating that there are no data with in this input.
+ 
+ # Overall Results: Holt-Winters plot that is in red shows a difference of the original time series plot that is in black. Holt-Winters shows a decreasing result than the original time plot where it is increasing.
+
+
+
+
+
+
+
+
+
